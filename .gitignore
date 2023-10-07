@@ -15,4 +15,6 @@
 .DS_Store
 .prettierignore
 /design
+/src
 *.md
+node_modules
