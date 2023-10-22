@@ -1,0 +1,309 @@
+@use 'sass:color';
+@use '../util' as *;
+$primary-color: hsl(26, 100%, 55%);
+
+.main {
+    @include breakpoint(small) {
+        flex-direction: column;
+    }
+
+    @include breakpoint(large) {
+        margin-top: 10vh;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        gap: clamp(2vw, 5vw, 8vw);
+    }
+
+    //image-section styles
+
+    &__section--images {
+       display: flex;
+       flex-direction: column;
+       gap: 0px;
+
+       @include breakpoint(large) {
+            gap: 25px;
+       }
+    }
+
+    &__thumbnails {
+        @include breakpoint(large) {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        @include breakpoint-down(large) {
+            display: none;
+        }
+    }
+
+    picture {
+        line-height: 0;
+        border-radius: 15px;
+    }
+
+    &__image {
+        border-radius: 15px;
+        cursor: pointer;
+        line-height: 0;
+
+        &--big {
+            border-radius: 0;
+            width: 36vw;
+            max-width: 600px;
+            height: auto;
+            display: none;
+            
+            @include breakpoint(large) {
+                border-radius: 25px;
+                display: block;
+            }
+        }
+
+        &--thumb {
+            width: clamp(3vw, 6vw, 10vw);
+            height: auto;
+
+            &:hover, &:focus {
+                border: 3px solid var(--primary-orange);
+                opacity: 0.8; 
+                outline: none;
+            }
+        }
+    }
+
+    //slide gallery on <= medium screen-width
+
+    &__add-gallery {
+        display: block;
+        width: 100vw;
+        position: relative;
+
+        @include breakpoint(large) {
+            display: none;
+        }
+
+        img {
+            min-width: 20vh;
+            width: 50vw;
+            height: auto;
+            display: block;
+
+            @include breakpoint-down(small) {
+                width: 100vw;
+            }
+        }
+    }
+
+    &__gallery-wrapper {
+        width: 100vw;
+        overflow: hidden;
+    }
+
+    &__slide-container {
+        list-style: none;
+        display: block;
+        white-space: nowrap;
+        height: auto;
+        width: 9999px;
+
+        transition: transform 0.5s ease-in-out;
+    }
+
+    &__slide {
+        display: inline-block;
+        flex: 1 1 auto;
+    }
+
+    &__slide-arrow {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 5px;
+        border: none;
+        z-index: 50;
+        top: calc(50% - 15px);
+        transition: all 150ms ease-in-out;
+
+        &:hover, &:focus {
+            color: var(--primary-orange);
+            background-color: darken(#fff, 20%);
+        }
+
+        &:active {
+            background-color: var(--dark-graish-blue);
+        }
+
+        &.arrow-prev {
+            left: 2vw;
+        }
+
+        &.arrow-next {
+            right: 2vw;
+        }
+    }
+
+
+    //product-info section
+
+    &__section--product-info {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-around;
+        align-items: stretch;
+        gap: 2vh;
+        padding: 0.5vh 5vw 2vh 5vw;
+
+        @include breakpoint(large) {
+            padding: 0;
+        }
+    }
+
+
+    &__h2 {
+        font-size: 20px;
+        color: var(--primary-orange);
+        text-transform: uppercase;
+        margin: 20px 0 15px 0;
+    }
+
+    &__h3 {
+        font-size: 44px;
+        margin-bottom: 20px;
+    }
+
+    &__newline {
+        display: inline;
+
+        @include breakpoint(large) {
+            display: block;
+        } 
+    }
+
+    &__nowrap {
+        white-space: normal;
+        @include breakpoint(large) {
+            white-space: nowrap;
+        } 
+    }
+
+    &__p {
+        color: var(--dark-graish-blue);
+        margin-bottom: 20px;
+        font-size: clamp(17px, 1.8vh, 3vh);
+        letter-spacing: 0.5px;
+        line-height: 1.5;
+    }
+
+    &__discount-price {
+        display: flex;
+        align-items: center;
+        gap: 4%;
+    }
+
+    &__price {
+        font-weight: 600;
+        font-size: 34px;
+    }
+
+    &__discount {
+        color: var(--primary-orange);
+        background-color: var(--primary-pale-orange);
+        padding: 4px 6px;
+        border-radius: 20%;
+        font-weight: 600;
+    }
+
+    &__original-price {
+        font-weight: 600;
+        color: var(--dark-graish-blue);
+        opacity: 0.6;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    &__counter {
+        background-color: var(--light-graish-blue);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 180px;
+        padding: 5px 12px;
+        border-radius: 10px;
+    }
+
+    &__quantity {
+        background-color: inherit;
+        text-shadow: 1px 1px 2px black;
+        border: none;
+        outline: none;
+        text-align: center;
+        font-size: 16px;
+        padding: 10px;
+        width: 100px;
+        font-weight: 400;
+        font-size: 20px;
+        appearance: none;
+
+
+        // omitting arrow buttons
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            display: none;
+        }
+
+        &[type=number] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+    }
+
+    &__button {
+        border: none;
+        background-color: inherit;
+        cursor: pointer;
+
+        &--plus {
+            margin-top: 5px;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        gap: 25px;
+    }
+
+    &__cta {
+        background-color: var(--primary-orange);
+        color: var(--white);
+        padding: 10px 20px;
+        border-radius: 15px;
+        width: 50vw;
+        max-width: 430px;
+        margin-left: 5vw;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+        height: 65px;
+
+        &:hover, &:focus {
+            background-color: lighten($primary-color, 15%);
+        }
+    }
+
+    &__cart {
+        filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(316deg) brightness(111%) contrast(101%);
+    }
+
+    &__cta-text {
+        font-size: clamp(1vh, 2vh, 20px);
+        letter-spacing: 1.2px;
+    }
+}

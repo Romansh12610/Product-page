@@ -1,0 +1,105 @@
+.lightbox-background {
+    z-index: -1;
+    background-color: lighten(black, 20%);
+    opacity: 0.9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    transition: all 0.15s ease-in;
+
+    &.open {
+        visibility: visible;
+        z-index: 100;
+    }
+}
+
+.lightbox-section {
+    z-index: -1;
+    position: fixed;
+    top: calc(20%);
+    left: calc(35%);
+    visibility: hidden;
+
+    &.open {
+        visibility: visible;
+        z-index: 101;
+    }
+
+
+    //close button
+
+    &__close {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: -45px;
+        right: -50px;
+        cursor: pointer;
+
+        &:hover, &:focus {
+            border: 3px solid var(--primary-orange);
+            border-radius: 10px;
+        }
+
+
+        &::before, &::after {
+            $width: 50px;
+            $height: 5px;
+            position: absolute;
+            left: calc(50% - ($width / 2));
+            top: calc(50% - ($height / 2));
+            width: $width;
+            height: $height;
+            background-color: rgb(255, 255, 255);
+            content: '';
+            border-radius: 3px;
+        } 
+        
+        &::before {
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+
+    //navigation buttons
+
+    &__prev, &__next {
+        $width: 70px;
+        $height: 70px;
+        width: $width;
+        height: $height;
+        position: absolute;
+        top: calc(35%);
+        border-radius: 50%;
+        border: 3px solid transparent;
+        font-size: 35px;
+        font-weight: 500;
+        background-color: var(--white);
+        color: var(--dark-graish-blue);
+        transition: all 180ms ease-in-out;
+
+        &:hover, &:focus {
+            border: 3px solid var(--primary-orange);
+            background-color: rgba($color: #fff, $alpha: 0.8);
+            color: var(--primary-orange);
+        }
+
+        &:active {
+            background-color: var(--dark-graish-blue);
+        }
+    }
+
+    &__prev {
+        left: -90px;
+    }
+
+    &__next {
+        right: -90px;
+    }
+}
