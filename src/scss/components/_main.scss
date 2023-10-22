@@ -162,6 +162,7 @@ $primary-color: hsl(26, 100%, 55%);
 
         @include breakpoint(large) {
             padding: 0;
+            justify-content: flex-start;
         }
     }
 
@@ -229,7 +230,7 @@ $primary-color: hsl(26, 100%, 55%);
     }
 
     &__counter {
-        background-color: var(--light-graish-blue);
+        background-color: hsl(233, 27%, 88%);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -248,7 +249,7 @@ $primary-color: hsl(26, 100%, 55%);
         padding: 10px;
         width: 100px;
         font-weight: 400;
-        font-size: 20px;
+        font-size: clamp(20px, 2.5vh, 3vh);
         appearance: none;
 
 
