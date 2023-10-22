@@ -192,7 +192,7 @@
     }
 
     .cart-info {
-        $width: 70vw;
+        $width: 450px;
         visibility: hidden;
         position: absolute;
         top: 120px;
@@ -202,7 +202,7 @@
         border-radius: 15px;
         padding-block: 15px;
         width: $width;
-        height: 30vh;
+        height: 300px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
