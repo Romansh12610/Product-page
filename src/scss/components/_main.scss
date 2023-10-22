@@ -8,7 +8,7 @@ $primary-color: hsl(26, 100%, 55%);
     }
 
     @include breakpoint(large) {
-        margin-top: 10vh;
+        margin-top: 7vh;
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
