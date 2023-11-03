@@ -265,6 +265,7 @@ counter.addEventListener('focusin', changeQuantityFocus);
 cta.addEventListener('click', ctaClick);
 cart.addEventListener('click', cartClick);
 deleteButton.addEventListener('click', deleteProducts);
+quantity.addEventListener('change', quantityChange);
 
 //get rid of keeping focus after click  
 for (let button of [document.querySelector('.cart-info__checkout'), cta]) {
@@ -312,6 +313,11 @@ function changeQuantityFocus(e) {
     }
 }
 
+function quantityChange() {
+    quantityValue = Number(quantity.value);
+    quantity.value = quantityValue;
+}
+
 
 function ctaClick(e) {
     if (!e.target.closest('button')) return;
@@ -347,6 +353,13 @@ function ctaClick(e) {
     priceText.append(insertSpan);
 
     insertSpan.innerHTML = ` ${quantityValue} = &dollar;${price * quantityValue}`;
+
+
+    //animation
+    const animated = document.createElement('span');
+    animated.classList.add('buying-signal');
+    document.body.append(animated);
+    console.log(animated);
 }
 
 function cartClick() {
