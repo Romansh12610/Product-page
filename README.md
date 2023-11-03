@@ -1,4 +1,4 @@
-# fem-product-page
+# Product-page
 E-commerce product page with interactivity.
 
 Created with vanila JS, SCSS and HTML.
